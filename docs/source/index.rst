@@ -86,14 +86,14 @@ Adding DataSource
 | **supported_ecosystem** should return a dictionary that maps PURL equivalent of ecosystem (aka purl.type) to DataSource equivalent ecosystem.
 | 
 
-Currently Supports DataSource
+Currently Supported DataSource
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Open Source Vulnerability <osv.dev>
 +++++++++++++++++++++++++++++++++++
 
-OSV provides API end point for querying package vulnerability. Unfortunately for NuGet, 
-OSV doesn't do case normalization on package name. So the datasource employs NuGet SearchQueryService for 
+OSV provides API end-point for querying package vulnerability. Unfortunately NuGet package names aren't 
+case normalized by OSV. So the OSVDataSource employs NuGet SearchQueryService for 
 discovering the valid case-sensitive package name and then uses that to query OSV.
 For more on this issue see `nexB/vulnerablecode/#800 <https://github.com/nexB/vulnerablecode/issues/800>`_
 
@@ -115,7 +115,7 @@ Related PR: `nexB/vulnerablecode#789 <https://github.com/nexB/vulnerablecode/pul
 GitHub provide GraphQL end-point for querying package vulnerability, but it comes with a caveat 
 that one can't query a specific version of a particular package. It dumps vulnerability related to 
 all the versions of a particular package. For this vulntotal_utils implements a specialized method
-``github_constraints_satisfied`` to filters out vulnerability for specific version.
+``github_constraints_satisfied`` to filters out vulnerabilities for specific version.
 
 Related PR: `nexB/vulnerablecode#804 <https://github.com/nexB/vulnerablecode/pull/804>`_
 
@@ -134,7 +134,7 @@ Related PR: `nexB/vulnerablecode#829 <https://github.com/nexB/vulnerablecode/pul
 ++++++++++++++++++++++++++++++++++
 
 VulnerableCodeDataSource currently make use of local VulnerableCode instance, but soon 
-will be migrated to global VulnerableCode instance.
+will be migrated to global instance.
 
 Related PR: `nexB/vulnerablecode#832 <https://github.com/nexB/vulnerablecode/pull/832>`_
 
@@ -142,8 +142,10 @@ Related PR: `nexB/vulnerablecode#832 <https://github.com/nexB/vulnerablecode/pul
 6. Snyk Vulnerability Database
 +++++++++++++++++++++++++++++++++++
 
-Snyk comes with no API whatsoever, so had to restore to web scrapping using BeautifulSoup. 
+Snyk comes with no API whatsoever, so had to restore to web scrapping using BeautifulSoup.
+A specialized method ``snky_constraints_satisfied`` was implemented just filter out vulnerabilities for specific version.
 Among all the datasources currently available, Snyk is the only one that keeps track of malicious packages.
+
 
 Related PR: `nexB/vulnerablecode#842 <https://github.com/nexB/vulnerablecode/pull/842>`_
 
@@ -151,8 +153,9 @@ Related PR: `nexB/vulnerablecode#842 <https://github.com/nexB/vulnerablecode/pul
 7. GitLab Gemnasium Advisory Database
 +++++++++++++++++++++++++++++++++++
 
-Again, GitLab comes with no API, so GitLabDataSource directly fetches data from GitLab gemnasium 
-repository. For case-sensitive package name, GitLab GraphQL end-point is used to pinpoint such packages.
+Again, GitLab comes with no API, so GitlabDataSource directly fetch package vulnerability data from GitLab gemnasium 
+repository. For case-sensitive package name, GitLab GraphQL end-point is used to get the exact package name.
+A similar method ``gitlab_constraints_satisfied`` is implemented to filter out vulnerabilities for specific version.
 
 Related PR: `nexB/vulnerablecode#883 <https://github.com/nexB/vulnerablecode/pull/883>`_
 
@@ -170,8 +173,7 @@ Command-line Interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 VulnTotal CLI takes PURL as an argument and returns vulnerability data from various data sources. 
-By default, vulnerability data is grouped by CVE.
-It also supports JSON and YAML data dump. 
+By default, vulnerability data is grouped by CVE. It also supports JSON and YAML data dump. 
 Since most datasources are Network I/O intensive, so by default CLI makes use of ThreadPoolExecutor 
 for better efficiency.
 
