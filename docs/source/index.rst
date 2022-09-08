@@ -207,7 +207,7 @@ Closing Thoughts
 
 Thoroughly enjoyed working on this project. Weekly calls were greatly helpful and thanks to 
 `Philippe <https://github.com/pombredanne>`_, `Hritik <https://github.com/hritik14>`_, 
-`Tushar <https://github.com/TG1999>`_ and `Shivam <https://github.com/sbs2001>`_ for the 
+`Tushar <https://github.com/TG1999>`_, `Shivam <https://github.com/sbs2001>`_ for the 
 thoughtful inputs. Learned a lot about various interesting projects and what it takes to tame some of 
 the real world problems. Greatly enhanced my ability to conduct myself in an open source world. All in all, it's 
 been a remarkable journey.
