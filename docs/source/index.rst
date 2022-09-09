@@ -1,10 +1,10 @@
 VulnTotal: Tool for cross-validating vulnerability
-============================================
+==================================================
 
 Organization - `AboutCode <https://www.aboutcode.org>`_
 -----------------------------------------------------------
 | **Keshav Priyadarshi**
-| GitHub: `@keshav-space <https://github.com/keshav-space>`_
+| GitHub: `keshav-space <https://github.com/keshav-space>`_
 | LinkedIn: `@keshav-space <https://www.linkedin.com/in/keshav-space>`_
 | Project: `VulnTotal <https://github.com/nexB/vulnerablecode/tree/vulntotal/vulntotal>`_
 | Proposal: `Link <https://docs.google.com/document/d/1it5eKwIiSsnuKuMAPhP1SoYiq412bdPmuAWNN25ZVAY/edit>`_
@@ -34,7 +34,7 @@ Sneak Peek
    `more on PURL <https://github.com/package-url>`_
 
 VulnTotal Development - Walkthrough
-----------------------------------
+------------------------------------
 
 Initial Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -48,8 +48,8 @@ The initial PR and commits outlined the core structure and implemented
 **DataSource** outlines core methords such as ``datasource_advisory`` and
 ``supported_ecosystem`` to be implemented by subclass.
 
-|
-Below is the tree view of VulnTotal for better understanding. ::
+
+Below is the tree view of VulnTotal for better understanding ::
 
     vulntotal
      ├── validator.py
@@ -92,15 +92,17 @@ Adding DataSource
 The initial config made adding datasource fairly smooth. AnyNewDataSource just needed to
 inherit ``DataSource`` and implement ``datasource_advisory`` and ``supported_ecosystem``
 
-| **datasource_advisory** is core method that takes PURL as an arguments and yields ``VendorData``
-| **supported_ecosystem** should return a dictionary that maps PURL equivalent of ecosystem
+**datasource_advisory** is core method that takes PURL as an arguments and yields ``VendorData``
+
+**supported_ecosystem** should return a dictionary that maps PURL equivalent of ecosystem 
 (aka purl.type) to DataSource equivalent ecosystem.
+
 
 Currently Supported DataSource
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Open Source Vulnerability <osv.dev>
-+++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++
 
 OSV provides API end-point for querying package vulnerability. Unfortunately NuGet package names aren't
 case normalized by OSV. So the OSVDataSource employs NuGet SearchQueryService for
@@ -111,7 +113,7 @@ Related PR: `nexB/vulnerablecode#788 <https://github.com/nexB/vulnerablecode/pul
 
 
 2. Open Source Insights <deps.dev>
-+++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++
 
 Writing datasource for deps was quite uneventful. Deps doesn't provide any documented API except
 for GCP BigQuery, but it does have obfuscated API and DepsDataSource makes use of that.
@@ -131,7 +133,7 @@ Related PR: `nexB/vulnerablecode#804 <https://github.com/nexB/vulnerablecode/pul
 
 
 4. Sonatype OSS Index
-+++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++
 
 OSSIndexDataSource makes use of oss-index API. OSS-Index only provides CVE's related
 particular package version and makes no mention of either the affected package versions
@@ -141,7 +143,7 @@ Related PR: `nexB/vulnerablecode#829 <https://github.com/nexB/vulnerablecode/pul
 
 
 5. VulnerableCode Advisory Database
-++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++
 
 VulnerableCodeDataSource currently make use of local VulnerableCode instance, but soon
 will be migrated to global instance.
@@ -163,7 +165,7 @@ Related PR: `nexB/vulnerablecode#842 <https://github.com/nexB/vulnerablecode/pul
 
 
 7. GitLab Gemnasium Advisory Database
-+++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++
 
 Again, GitLab comes with no API, so GitlabDataSource is designed to directly
 fetch package vulnerability data from GitLab gemnasium
