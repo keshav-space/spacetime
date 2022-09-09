@@ -153,8 +153,8 @@ Related PR: `nexB/vulnerablecode#842 <https://github.com/nexB/vulnerablecode/pul
 7. GitLab Gemnasium Advisory Database
 +++++++++++++++++++++++++++++++++++
 
-Again, GitLab comes with no API, so GitlabDataSource directly fetch package vulnerability data from GitLab gemnasium 
-repository. For case-sensitive package name, GitLab GraphQL end-point is used to get the exact package name.
+Again, GitLab comes with no API, so GitlabDataSource is designed to directly fetch package vulnerability data from GitLab gemnasium 
+repository. For case-sensitive package name, GitLab GraphQL end-point is used to get the exact case-sensitive package name.
 A similar method ``gitlab_constraints_satisfied`` is implemented to filter out vulnerabilities for specific version.
 
 Related PR: `nexB/vulnerablecode#883 <https://github.com/nexB/vulnerablecode/pull/883>`_
