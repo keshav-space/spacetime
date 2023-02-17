@@ -5,8 +5,9 @@ Organization - `AboutCode <https://www.aboutcode.org>`_
 -----------------------------------------------------------
 | **Keshav Priyadarshi**
 | GitHub: `keshav-space <https://github.com/keshav-space>`_
+| Matrix: `keshav.space <https://matrix.to/#/@keshav.space:matrix.org>`_
 | LinkedIn: `@keshav-space <https://www.linkedin.com/in/keshav-space>`_
-| Project: `VulnTotal <https://github.com/nexB/vulnerablecode/tree/vulntotal/vulntotal>`_
+| Project: `VulnTotal <https://github.com/nexB/vulnerablecode/tree/main/vulntotal>`_
 | Proposal: `Link <https://docs.google.com/document/d/1it5eKwIiSsnuKuMAPhP1SoYiq412bdPmuAWNN25ZVAY/edit>`_
 
 Overview
